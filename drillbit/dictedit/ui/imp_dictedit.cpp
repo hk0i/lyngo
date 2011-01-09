@@ -19,7 +19,11 @@ void DictEditWin::on_mnuOpen_triggered(bool)
             tr("Lyngo Drillbit (*.ldb)")
     );
 
-    this->_dictionary.load(fileName);
+    // Delete the previous dictionary, if one exists.
+    if (this->_dictionary)
+        delete this->_dictionary;
+    this->_dictionary = new LyDict();
+    this->_dictionary->load(fileName);
 
     // propagate data into widgets
     update_widgets();
@@ -36,12 +40,12 @@ void DictEditWin::update_widgets(void)
     this->twWordBank->clear();
     this->leUnitTitle->setText("[Unit Title]");
 
-    if (!this->_dictionary.name().isEmpty())
-        this->leUnitTitle->setText(this->_dictionary.name());
+    if (!this->_dictionary->name().isEmpty())
+        this->leUnitTitle->setText(this->_dictionary->name());
 
-    for (int i = 0; i < this->_dictionary.count(); ++i) {
-        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary.itemAt(i));
-        DEBUG_PRINT(this->_dictionary.itemAt(i).join(", ").toStdString().c_str());
+    for (int i = 0; i < this->_dictionary->count(); ++i) {
+        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i));
+        DEBUG_PRINT(this->_dictionary->itemAt(i).join(", ").toStdString().c_str());
         this->twWordBank->addTopLevelItem(item);
     }
 }

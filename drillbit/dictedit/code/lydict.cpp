@@ -180,7 +180,7 @@ QString LyDict::posFromAbbr(QChar letter)
             break;
 
         default:
-            return QString("UNKNOWN_CONVERSION");
+            return QString("");
     }
 }
 

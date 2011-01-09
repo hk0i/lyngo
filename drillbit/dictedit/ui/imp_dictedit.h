@@ -15,5 +15,5 @@ class DictEditWin : public QMainWindow, private Ui::DictEditWin
     private:
         void update_widgets(void);
 
-        LyDict _dictionary;
+        LyDict *_dictionary;
 };
