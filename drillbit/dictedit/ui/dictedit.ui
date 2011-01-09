@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DictEditWin</class>
+ <widget class="QMainWindow" name="DictEditWin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>636</width>
+    <height>414</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lyngo Drillbit Editor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="leWord"/>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLineEdit" name="leDefinition"/>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="pbAdd">
+      <property name="text">
+       <string>&amp;Add</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QPushButton" name="pbEdit">
+      <property name="text">
+       <string>&amp;Edit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QPushButton" name="pbRemove">
+      <property name="text">
+       <string>&amp;Remove</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QPushButton" name="pbEditFileInfo">
+      <property name="text">
+       <string>&amp;Edit File Info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>126</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Word:</string>
+      </property>
+      <property name="buddy">
+       <cstring>leWord</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Meaning:</string>
+      </property>
+      <property name="buddy">
+       <cstring>leDefinition</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="cmbPartOfSpeech">
+      <property name="minimumSize">
+       <size>
+        <width>127</width>
+        <height>0</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>expression</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>verb</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>noun</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>pronoun</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>adjective</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>adverb</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>preposition</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>conjunction</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>interjection</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0" rowspan="5" colspan="3">
+     <widget class="QTreeWidget" name="twWordBank">
+      <property name="columnCount">
+       <number>3</number>
+      </property>
+      <attribute name="headerDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <attribute name="headerDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Word</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Part of Speech</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Meaning</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="4">
+     <widget class="QLineEdit" name="leUnitTitle">
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>[Unit Title]</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Part of Speech:</string>
+      </property>
+      <property name="buddy">
+       <cstring>leDefinition</cstring>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>636</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="mnuNew"/>
+    <addaction name="separator"/>
+    <addaction name="mnuOpen"/>
+    <addaction name="mnuSave"/>
+    <addaction name="mnuSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="mnuExit"/>
+   </widget>
+   <addaction name="menu_File"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="mnuNew">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="mnuOpen">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="mnuSave">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="mnuSaveAs">
+   <property name="text">
+    <string>Save &amp;as...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="mnuExit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>leUnitTitle</tabstop>
+  <tabstop>leWord</tabstop>
+  <tabstop>cmbPartOfSpeech</tabstop>
+  <tabstop>leDefinition</tabstop>
+  <tabstop>pbAdd</tabstop>
+  <tabstop>twWordBank</tabstop>
+  <tabstop>pbEdit</tabstop>
+  <tabstop>pbRemove</tabstop>
+  <tabstop>pbEditFileInfo</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

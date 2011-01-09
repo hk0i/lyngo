@@ -1,0 +1,222 @@
+<ui version="4.0" >
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>484</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Lyngo Drillbit</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QVBoxLayout" name="verticalLayout" >
+    <item>
+     <widget class="QLabel" name="lblUnit" >
+      <property name="font" >
+       <font>
+        <pointsize>24</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text" >
+       <string>Getting Started</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblWord" >
+      <property name="minimumSize" >
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font" >
+       <font>
+        <pointsize>48</pointsize>
+       </font>
+      </property>
+      <property name="text" >
+       <string>Open a file from the menu to review</string>
+      </property>
+      <property name="textFormat" >
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer" >
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType" >
+       <enum>QSizePolicy::MinimumExpanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout" >
+      <item row="0" column="0" >
+       <widget class="QToolButton" name="tbChoice1" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>...</string>
+        </property>
+        <property name="shortcut" >
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QToolButton" name="tbChoice4" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>...</string>
+        </property>
+        <property name="shortcut" >
+         <string>4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QToolButton" name="tbChoice3" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>...</string>
+        </property>
+        <property name="shortcut" >
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QToolButton" name="tbChoice2" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>...</string>
+        </property>
+        <property name="shortcut" >
+         <string>2</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>560</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="mnuOpen" />
+    <addaction name="mnuHTMLQuiz" />
+    <addaction name="separator" />
+    <addaction name="mnuExit" />
+   </widget>
+   <addaction name="menu_File" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+  <action name="mnuOpen" >
+   <property name="text" >
+    <string>&amp;Open Session</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="mnuExit" >
+   <property name="text" >
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="mnuHTMLQuiz" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="text" >
+    <string>Generate &amp;HTML Quiz</string>
+   </property>
+  </action>
+  <action name="action_Restart" >
+   <property name="text" >
+    <string>&amp;Restart</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>tbChoice1</tabstop>
+  <tabstop>tbChoice2</tabstop>
+  <tabstop>tbChoice3</tabstop>
+  <tabstop>tbChoice4</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

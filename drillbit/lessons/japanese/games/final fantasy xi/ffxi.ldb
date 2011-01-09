@@ -1,0 +1,91 @@
+#ffxi.ldb - final fantasy XI drillbit file.
+# data taken from http://junya.s6.xrea.com/ja.txt (sjis) and iconv'd to utf-8,
+# reformatted with awk. hail unix!
+# "if it's wrong, it ain't my fault!"
+!Final Fantasy XI
+WAR 		 戦士 
+Mighty Strikes 		 マイティストライク 
+Provoke 		 挑発 
+Berserk 		 バーサク 
+Defender 		 ディフェンダー 
+War Cry 		 ウォークライ 
+Aggressor 		 アグレッサー 
+MNK 		 モンク 
+Hundred Fists 		 百烈拳 
+Boost 		 ためる 
+Dodge 		 回避 
+Focus 		 集中 
+Chakara 		 チャクラ 
+Chi Blast 		 気孔弾 
+Counterstance 		 かまえる 
+WHM 		 白魔道士 
+Benediction 		 女神の祝福 
+Divine Seal 		 女神の印 
+BLM 		 黒魔道士 
+Manafont 		 魔力の泉 
+Elemental Seal 		 精霊の印 
+RDM 		 赤魔道士 
+Chainspell 		 連続魔 
+Convert 		 コンバート 
+THF 		 シーフ 
+Perfect Dodge 		 絶対回避 
+Steal 		 ぬすむ 
+Sneak Attack 		 不意打ち 
+Flee 		 とんずら 
+Trick Attack 		 だまし討ち 
+Mug 		 かすめとる 
+Hide 		 かくれる 
+PLD 		 ナイト 
+Invincible 		 インビンシブル 
+Holy Circle 		 ホーリーサークル 
+Shield Bash 		 シールドバッシュ 
+Sentinel 		 センチネル 
+Cover 		 かばう 
+Rampart 		 ランパート 
+DRK 		 暗黒騎士 
+Blood Weapon 		 ブラッドウェポン 
+Arcane Circle 		 アルケインサークル 
+Last Resort 		 ラストリゾート 
+Weapon Bash 		 ウェポンバッシュ 
+Souleater 		 暗黒 
+BST 		 獣使い 
+Familiar 		 使い魔 
+Charm 		 あやつる 
+Fight 		 たたかえ 
+Gauge 		 みやぶる 
+Heel 		 もどれ 
+Reward 		 いたわる 
+Stay 		 まってろ 
+Call Beast 		 よびだす 
+Sic 		 ほんきだせ 
+Tame 		 なだめる 
+Leave 		 かえれ 
+BRD 		 吟遊詩人 
+Soul Voice 		 ソウルボイス 
+RNG 		 狩人 
+Eagle Eye 		 イーグルアイ 
+Sharpshot 		 狙い撃ち 
+Scavenge 		 スカベンジ 
+Camouflage 		 カモフラージュ 
+Barrage 		 乱れ撃ち 
+Shadowbind 		 影縫い 
+SMN 		 召喚士 
+Astral Flow 		 アストラルフロウ 
+Assault 		 神獣の攻撃 
+Retreat 		 神獣の退避 
+Release 		 神獣の帰還 
+Blood Pact 		 契約の履行 
+SAM 		 侍 
+Meikyo Shisui 		 明鏡止水 
+Warding Circle 		 護摩の守護円 
+Third Eye 		 心眼 
+Meditate 		 黙想 
+NIN 		 忍者 
+Mijin Gakure 		 微塵がくれ 
+DRG 		 竜騎士 
+Call Wyvern 		 コールワイバーン 
+Dismiss 		 送還 
+Ancient Circle 		 エンシェントサークル 
+Jump 		 ジャンプ 
+High Jump 		 ハイジャンプ 
+Super Jump 		 スーパージャンプ 

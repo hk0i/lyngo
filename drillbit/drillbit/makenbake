@@ -1,0 +1,8 @@
+#!/bin/bash
+qmake -project -o driller.src
+qmake -spec macx-g++ driller.src
+make
+
+if [ $? == 0 ]; then
+	driller.app/Contents/MacOS/driller
+fi
