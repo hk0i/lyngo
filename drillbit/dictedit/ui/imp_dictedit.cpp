@@ -82,8 +82,8 @@ void DictEditWin::update_widgets(void)
     DEBUG_PRINT("update_widgets: populating list data...");
 
     for (int i = 0; i < this->_dictionary->count(); ++i) {
-        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i));
-        DEBUG_PRINT(this->_dictionary->itemAt(i).join(", ").toStdString().c_str());
+        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i).data(false));
+        DEBUG_PRINT(this->_dictionary->itemAt(i).data().join(", ").toStdString().c_str());
         this->twWordBank->addTopLevelItem(item);
     }
 }

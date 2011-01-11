@@ -15,7 +15,7 @@ class LyWord
         QString partOfSpeech(void) const;
         QChar   pos(void) const;
 
-        QStringList data(void) const;
+        QStringList data(bool fileOutput = true) const;
 
         void setWord(const QString &);
         void setDefinition(const QString &);

@@ -6,9 +6,13 @@ int main(int argc, const char *argv[])
 {
     LyDict ld;
 
-    ld.load("/home/gmcquillan/apps/pylyngo/lessons/no hay que complicar la felicidad.ldb");
+    ld.load("../../lessons/spanish/text books/revista - conversasion sin barreras/cine prado.ldb");
     std::cout << "count:" << ld.count() <<std::endl;
-    ld.save("/home/gmcquillan/test.ldb");
+    ld.save("/Users/grekkos/test.ldb");
+
+    QStringList testing;
+    testing << "one " << "1" << " two " << "2";
+    std::cout << testing.join(QString(",")).toStdString().c_str();
 
     LyWord apple(QString("Apple"),
                  QChar('n'),
@@ -22,7 +26,7 @@ int main(int argc, const char *argv[])
               << "\n";
 
     std::cout << "For writing to file (data()): \n"
-              << apple.data().join(QString("\t")).trimmed().toStdString().c_str();
+              << apple.data().join(QString("\t")).toStdString().c_str();
 
     return 0;
 }

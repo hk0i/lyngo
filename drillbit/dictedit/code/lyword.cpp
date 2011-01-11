@@ -70,14 +70,20 @@ QString LyWord::partOfSpeech(void) const
 /**
  * @brief
  *  Returns a QStringList of all the word's data linked together
+ * @param fileOutput
+ *  When set to true (the default value) this will output the part of speech a
+ *  a single character instead of a human-understandable word. Set this value
+ *  to false when using data() for a human display.
  */
-QStringList LyWord::data(void) const
+QStringList LyWord::data(bool fileOutput) const
 {
-    QString s = "";
-    QStringList ret(s);
-    ret << _word
-        << _pos
-        << _definition;
+    QStringList ret;
+    ret << _word;
+    if (fileOutput)
+        ret << _pos;
+    else
+        ret << partOfSpeech();
+    ret << _definition;
     return ret;
 }
 

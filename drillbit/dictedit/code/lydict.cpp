@@ -5,7 +5,6 @@
 #endif
 
 LyDict::LyDict(void)
-    : _count(0)
 {
 
 }
@@ -45,7 +44,7 @@ void LyDict::parse_line(QString line)
 /**
  * @brief Retrieve the number of words in dictionary
  */
-const int LyDict::count(void) const { return this->_count; }
+const int LyDict::count(void) const { return _words.size(); }
 
 /**
  * @brief convenience function for adding a word
@@ -57,19 +56,26 @@ void LyDict::add(const QString &word,
     this->add(word, QChar(pos), definition);
 }
 
+/**
+ * @brief
+ *  Adds a LyWord directly to the list.
+ */
+void LyDict::add(const LyWord &word)
+{
+    _words.append(word);
+}
+
 void LyDict::add(const QString &word,
                     const QChar &pos,
                     const QString &definition)
 {
-    this->_words << word;
-    this->_pos   << pos;
-    this->_definitions << definition;
+    LyWord newWord(word, pos, definition);
+    _words.append(newWord);
 
-    DEBUG_PRINT("Word added: " << word.toStdString().c_str()
-                               << '\t' << pos.toAscii()
-                               << '\t' << definition.toStdString().c_str());
+    DEBUG_PRINT("Word added: "
+            << newWord.data().join(QString(", "))
+               .mid(2).toStdString().c_str());
 
-    this->_count++;
 }
 
 /**
@@ -77,9 +83,7 @@ void LyDict::add(const QString &word,
  */
 void LyDict::removeAt(const int &i)
 {
-    this->_words.removeAt(i);
-    this->_pos.removeAt(i);
-    this->_definitions.removeAt(i);
+    _words.removeAt(i);
 }
 
 void LyDict::save(const QString &fileName)
@@ -93,12 +97,8 @@ void LyDict::save(const QString &fileName)
 
     QTextStream out(&fp);
     out << "!" << this->_name << endl;
-    for (int i = 0; i < this->_count; ++i) {
-        out << this->_words[i] << '\t'
-            << this->_pos[i] << '\t'
-            << this->_definitions[i] << '\t'
-            << endl;
-    }
+    for (int i = 0; i < _words.size(); ++i)
+        out << _words[i].data().join(QString("\t")).trimmed() << endl;
 }
 
 /**
@@ -106,13 +106,9 @@ void LyDict::save(const QString &fileName)
  *  Creates a QStringList of the information of word at position i and returns
  *  it.
  */
-QStringList LyDict::itemAt(const int &i)
+LyWord LyDict::itemAt(const int &i)
 {
-    QStringList ret;
-    ret << this->_words[i]
-        << LyDict::posFromAbbr(this->_pos[i])
-        << this->_definitions[i];
-    return ret;
+    return _words[i];
 }
 
 QChar LyDict::posFromName(QString name)
