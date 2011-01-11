@@ -12,6 +12,7 @@ class DictEditWin : public QMainWindow, private Ui::DictEditWin
 
     private slots:
         // menus
+        void on_mnuNew_triggered(bool);
         void on_mnuOpen_triggered(bool);
         void on_mnuSave_triggered(bool);
         void on_mnuSaveAs_triggered(bool);

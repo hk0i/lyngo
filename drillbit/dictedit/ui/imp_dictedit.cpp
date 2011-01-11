@@ -30,6 +30,9 @@ void DictEditWin::on_mnuOpen_triggered(bool)
             tr("Lyngo Drillbit (*.ldb)")
     );
 
+    if (fileName.isEmpty())
+        return;
+
     // Delete the previous dictionary, if one exists.
     if (this->_dictionary)
         delete this->_dictionary;
@@ -40,6 +43,25 @@ void DictEditWin::on_mnuOpen_triggered(bool)
     // propagate data into widgets
     update_widgets();
 
+}
+
+/**
+ * @brief
+ *  File > New clicked event; creates a new dictionary and deletes the old
+ *  one
+ */
+void DictEditWin::on_mnuNew_triggered(bool)
+{
+    _current_file = "";
+
+    if (_dictionary) {
+        DEBUG_PRINT("file new: deleting old dictionary");
+        delete this->_dictionary;
+    }
+    DEBUG_PRINT("file new: creating new dictionary");
+    _dictionary = new LyDict();
+    DEBUG_PRINT("file new: update widgets");
+    update_widgets();
 }
 
 /**
@@ -56,6 +78,8 @@ void DictEditWin::update_widgets(void)
         this->update_window_title();
     if (!this->_dictionary->name().isEmpty())
         this->leUnitTitle->setText(this->_dictionary->name());
+
+    DEBUG_PRINT("update_widgets: populating list data...");
 
     for (int i = 0; i < this->_dictionary->count(); ++i) {
         QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i));
@@ -140,9 +164,15 @@ void DictEditWin::on_pbAdd_clicked(void)
 
 /**
  * @brief
- *  Edits the currently highlighted word in the dictionary
+ *  Edits the currently highlighted word in the dictionary and updates it with
+ *  current information from the "add" widgets.
  */
 void DictEditWin::on_pbEdit_clicked(void)
 {
-
+    if (this->twWordBank->currentItem()) {
+        // _dictionary->itemAt(
+        this->twWordBank->currentItem()->setData(0, 0, this->leWord->text());
+        this->twWordBank->currentItem()->setData(1, 0, this->cmbPartOfSpeech->currentText());
+        this->twWordBank->currentItem()->setData(2, 0, this->leDefinition->text());
+    }
 }
