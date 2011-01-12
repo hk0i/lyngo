@@ -3,6 +3,11 @@
 
 #include <QtCore>
 
+/**
+ * @brief
+ *  Represents a word with its associated definition and part of speech.
+ * @author Gregory McQuillan
+ */
 class LyWord
 {
     public:

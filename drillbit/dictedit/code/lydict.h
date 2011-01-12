@@ -13,6 +13,12 @@
 #define DEBUG_PRINT(x)
 #endif
 
+/**
+ * @brief
+ *  A list (dictionary) of @ref LyWord "LyWords" that is capable of file
+ *  loading and saving.
+ * @author Gregory McQuillan
+ */
 class LyDict
 {
     public:
@@ -20,19 +26,19 @@ class LyDict
         LyDict(void);
         // ~LyDict(void);
 
-        void load(const QString&); /** loads a dictionary from file */
-        void save(const QString&); /** saves a dictionary to a file */
+        void load(const QString&);
+        void save(const QString&);
 
         // Mutators
         void setName(const QString&);
 
         void add(const LyWord&);
 
-        void add(const QString &,   /** add a word to the dictionary */
+        void add(const QString &,
                  const QChar&,
                  const QString &);
 
-        void add(const QString &,   /** add a word to the dictionary */
+        void add(const QString &,
                  const char&,
                  const QString &);
 
@@ -40,8 +46,8 @@ class LyDict
 
         // Accessors
         QString name(void);
-        LyWord *itemAt(const int&); /** retreives a reference to the item at position i */
-        const int count(void) const; /** retrieves the number of words in dictionary **/
+        LyWord *itemAt(const int&);
+        const int count(void) const;
 
         // Misc
         static QString posFromAbbr(QChar);

@@ -9,7 +9,17 @@ LyDict::LyDict(void)
 
 }
 
+/**
+ * @brief
+ *  Loads a dictionary from file fileName.
+ * @param[in] fileName
+ *  The path to the Lyngo Drillbit Dictionary (*.ldb) file to be loaded.
+ */
 void LyDict::load(const QString &fileName) { this->load_file(fileName); }
+/**
+ * @brief
+ *  Assigns a name or unit title to the dictionary.
+ */
 void LyDict::setName(const QString &newName) { this->_name = newName; }
 
 void LyDict::load_file(const QString &fileName)
@@ -29,6 +39,10 @@ void LyDict::load_file(const QString &fileName)
     fp.close();
 }
 
+/**
+ * @brief
+ *  Parses lines of input for file loading.
+ */
 void LyDict::parse_line(QString line)
 {
     QStringList tokens = line.split('\t');
@@ -42,12 +56,17 @@ void LyDict::parse_line(QString line)
 }
 
 /**
- * @brief Retrieve the number of words in dictionary
+ * @brief
+ *  Retrieve the number of words in dictionary
  */
 const int LyDict::count(void) const { return _words.size(); }
 
 /**
- * @brief convenience function for adding a word
+ * @brief
+ *  Convenience function for adding a word that does not require a LyWord
+ *  object or QChar.
+ * @see
+ *  LyWord::partOfSpeech
  */
 void LyDict::add(const QString &word,
                  const char &pos,
@@ -65,6 +84,10 @@ void LyDict::add(const LyWord &word)
     _words.append(word);
 }
 
+/**
+ * @brief
+ *  Adds a LyWord to the dictionary using 3 Qt datatype arguments
+ */
 void LyDict::add(const QString &word,
                     const QChar &pos,
                     const QString &definition)
@@ -111,6 +134,18 @@ LyWord *LyDict::itemAt(const int &i)
     return &_words[i];
 }
 
+/**
+ * @brief
+ *  Returns a single-character representation of the part of speech, given its
+ *  name in QString form.
+ * @param[in] name
+ *  The name of the part of speech, i.e., "noun"
+ * @retval QChar
+ *  Returns the character that represents the given string.
+ * @see
+ *  posFromAbbr
+ *  LyWord::partOfSpeech
+ */
 QChar LyDict::posFromName(QString name)
 {
     name = name.toLower();
@@ -134,6 +169,14 @@ QChar LyDict::posFromName(QString name)
         return 'i';
 }
 
+/**
+ * @brief
+ *  Returns the part of speech based on the letter. See the conversion table in
+ *  LyWord::partOfSpeech
+ * @see
+ *  posFromName
+ *  LyWord::partOfSpeech
+ */
 QString LyDict::posFromAbbr(QChar letter)
 {
     letter = letter.toLower();
