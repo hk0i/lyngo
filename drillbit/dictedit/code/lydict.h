@@ -40,7 +40,7 @@ class LyDict
 
         // Accessors
         QString name(void);
-        LyWord itemAt(const int&); /** retrieve a QStringList of an item at position i */
+        LyWord *itemAt(const int&); /** retreives a reference to the item at position i */
         const int count(void) const; /** retrieves the number of words in dictionary **/
 
         // Misc

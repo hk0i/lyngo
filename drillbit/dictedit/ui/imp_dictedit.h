@@ -23,6 +23,7 @@ class DictEditWin : public QMainWindow, private Ui::DictEditWin
         // buttons
         void on_pbAdd_clicked(void);
         void on_pbEdit_clicked(void);
+        void on_pbRemove_clicked(void);
 
     private:
         void update_widgets(void);

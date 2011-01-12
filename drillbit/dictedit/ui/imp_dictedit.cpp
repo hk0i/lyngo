@@ -82,8 +82,8 @@ void DictEditWin::update_widgets(void)
     DEBUG_PRINT("update_widgets: populating list data...");
 
     for (int i = 0; i < this->_dictionary->count(); ++i) {
-        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i).data(false));
-        DEBUG_PRINT(this->_dictionary->itemAt(i).data().join(", ").toStdString().c_str());
+        QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i)->data(false));
+        DEBUG_PRINT(this->_dictionary->itemAt(i)->data().join(", ").toStdString().c_str());
         this->twWordBank->addTopLevelItem(item);
     }
 }
@@ -133,11 +133,13 @@ void DictEditWin::update_window_title(void)
 void DictEditWin::on_twWordBank_currentItemChanged(QTreeWidgetItem *newItem,
         QTreeWidgetItem *oldItem)
 {
-    this->leWord->setText(newItem->text(0));
-    this->cmbPartOfSpeech->setCurrentIndex(
-            cmbPartOfSpeech->findText(newItem->text(1))
-    );
-    this->leDefinition->setText(newItem->text(2));
+    if (newItem) {
+        this->leWord->setText(newItem->text(0));
+        this->cmbPartOfSpeech->setCurrentIndex(
+                cmbPartOfSpeech->findText(newItem->text(1))
+        );
+        this->leDefinition->setText(newItem->text(2));
+    }
 }
 
 /**
@@ -170,9 +172,40 @@ void DictEditWin::on_pbAdd_clicked(void)
 void DictEditWin::on_pbEdit_clicked(void)
 {
     if (this->twWordBank->currentItem()) {
-        // _dictionary->itemAt(
+        int currentRow = twWordBank->currentIndex().row();
+        DEBUG_PRINT("on_pbEdit_clicked(): "
+                 << "currentRow == " << currentRow
+        );
+        _dictionary->itemAt(currentRow)->setWord(leWord->text());
+        _dictionary->itemAt(currentRow)->setPos(LyDict::posFromName(
+                    cmbPartOfSpeech->currentText()
+        ));
+        _dictionary->itemAt(currentRow)->setDefinition(leDefinition->text());
+
+        DEBUG_PRINT("on_pbEdit_clicked(): "
+                <<  "_dictionary->itemAt(currentRow) == "
+                << _dictionary->itemAt(currentRow)->data()
+                        .join(QString(", ")).toStdString().c_str()
+        );
+
         this->twWordBank->currentItem()->setData(0, 0, this->leWord->text());
         this->twWordBank->currentItem()->setData(1, 0, this->cmbPartOfSpeech->currentText());
         this->twWordBank->currentItem()->setData(2, 0, this->leDefinition->text());
+    }
+}
+
+/**
+ * @brief
+ *  Removes the currently selected word from the dictionary.
+ */
+void DictEditWin::on_pbRemove_clicked(void)
+{
+    if (twWordBank->currentItem()) {
+        int currentRow = twWordBank->currentIndex().row();
+        _dictionary->removeAt(currentRow);
+        DEBUG_PRINT("on_pbRemove_clicked(): "
+                <<  "currentRow == " << currentRow
+        );
+        delete twWordBank->currentItem();
     }
 }
