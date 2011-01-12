@@ -79,6 +79,11 @@ void DictEditWin::update_widgets(void)
     if (!this->_dictionary->name().isEmpty())
         this->leUnitTitle->setText(this->_dictionary->name());
 
+    // clear line edits and reset combo box
+    leWord->clear();
+    cmbPartOfSpeech->setCurrentIndex(0);
+    leDefinition->clear();
+
     DEBUG_PRINT("update_widgets: populating list data...");
 
     for (int i = 0; i < this->_dictionary->count(); ++i) {
@@ -86,6 +91,9 @@ void DictEditWin::update_widgets(void)
         DEBUG_PRINT(this->_dictionary->itemAt(i)->data().join(", ").toStdString().c_str());
         this->twWordBank->addTopLevelItem(item);
     }
+
+    // set focus to title box
+    leUnitTitle->setFocus();
 }
 
 /**
