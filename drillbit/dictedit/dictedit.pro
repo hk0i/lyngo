@@ -8,9 +8,11 @@ DEPENDPATH += . code tests ui
 INCLUDEPATH += . ui code
 
 # Input
-HEADERS += code/lydict.h code/lyword.h ui/imp_dictedit.h
+LIB_PATH=/Users/grekkos/apps/lyngo/lyngo-svn/trunk/lyngo/drillbit/lib/
+INCLUDEPATH += $$LIB_PATH
+HEADERS += $$LIB_PATH/lydict.h $$LIB_PATH/lyword.h ui/imp_dictedit.h
 FORMS += ui/dictedit.ui
 SOURCES += main.cpp \
-           code/lydict.cpp \
-           code/lyword.cpp \
+           $$LIB_PATH/lydict.cpp \
+           $$LIB_PATH/lyword.cpp \
            ui/imp_dictedit.cpp

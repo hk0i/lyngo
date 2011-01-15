@@ -1,6 +1,6 @@
 #include <QtGui>
 #include "ui_dictedit.h"
-#include "code/lydict.h"
+#include <LyDict.h>
 
 class DictEditWin : public QMainWindow, private Ui::DictEditWin
 {
