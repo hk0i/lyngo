@@ -126,8 +126,7 @@ void LyDict::save(const QString &fileName)
 
 /**
  * @brief
- *  Creates a QStringList of the information of word at position i and returns
- *  it.
+ *  Returns a pointer to the LyWord at position i.
  */
 LyWord *LyDict::itemAt(const int &i)
 {
