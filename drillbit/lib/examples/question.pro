@@ -7,6 +7,10 @@ TARGET = question
 DEPENDPATH += .
 INCLUDEPATH += . ../
 
+mac {
+    CONFIG -= app_bundle
+}
+
 # Input
 SOURCES += question.cpp \
           ../LyQuestion.h \
