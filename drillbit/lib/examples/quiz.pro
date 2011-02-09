@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = quiz
 DEPENDPATH += .
 INCLUDEPATH += . ../
+CONFIG += debug
 
 mac {
     CONFIG -= app_bundle
@@ -13,5 +14,11 @@ mac {
 
 # Input
 SOURCES += quiz.cpp \
+           ../LyQuestion.h \
+           ../LyQuestion.cpp \
+           ../LyDict.h \
+           ../LyDict.cpp \
+           ../LyWord.h \
+           ../LyWord.cpp \
            ../LyQuiz.h \
            ../LyQuiz.cpp

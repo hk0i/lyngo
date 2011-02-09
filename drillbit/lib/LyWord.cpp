@@ -1,4 +1,4 @@
-#include "lyword.h"
+#include "LyWord.h"
 
 LyWord::LyWord(void)
 {

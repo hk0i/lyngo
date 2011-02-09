@@ -1,4 +1,4 @@
-#include "lydict.h"
+#include "LyDict.h"
 
 #ifdef DEBUG
 #include <iostream>

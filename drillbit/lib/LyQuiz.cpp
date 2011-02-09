@@ -20,7 +20,24 @@ LyQuiz::LyQuiz(const LyDict &dictionary)
  */
 void LyQuiz::setDictionary(const LyDict &newDict)
 {
+    int i = 0; // loop counter
+    int wom = 0; // random number (0,1), decides if question will be word or meaning
     _dictionary = newDict;
+
+    // generate questions based on the dictionary
+    for (i = 0; i < _dictionary.count(); ++i) {
+        wom = qrand() % 2;
+        if (wom > 1) {
+            _questions.append(LyQuestion(_dictionary.itemAt(i)->word(),
+                              _dictionary.itemAt(i)->definition()
+            ));
+        }
+        else {
+            _questions.append(LyQuestion(_dictionary.itemAt(i)->word(),
+                              _dictionary.itemAt(i)->definition()
+            ));
+        }
+    }
 }
 
 /**
@@ -30,7 +47,9 @@ void LyQuiz::setDictionary(const LyDict &newDict)
  */
 LyQuestion LyQuiz::next(void)
 {
-    return _questions[_current_question++];
+    // minus one to take into account that we will be incrementing it after.
+    if (_current_question < _questions.count() - 1)
+        return _questions[_current_question++];
 }
 
 /**
@@ -40,16 +59,17 @@ LyQuestion LyQuiz::next(void)
  */
 LyQuestion LyQuiz::prev(void)
 {
-    return _questions[_current_question--];
+    if (_current_question > 0 && _current_question < _questions.count())
+        return _questions[_current_question--];
 }
 
 /**
  * @brief
  *  Returns a pointer to the dictionary object being used by the quiz.
  */
-LyDict LyQuiz::dictionary(void)
+LyDict *LyQuiz::dictionary(void)
 {
-    return _dictionary;
+    return &_dictionary;
 }
 
 /**
@@ -70,8 +90,12 @@ int LyQuiz::currentQuestion(void) const
  */
 LyQuestion *LyQuiz::random_question(void)
 {
-    int rnd = qrand() % _questions.count();
-    return _questions[rnd];
+    int rnd = 0;
+    DEBUG_PRINT("questions.count(): " << _questions.count());
+    if (_questions.count() > 0) {
+        rnd = qrand() % _questions.count();
+        return &_questions[rnd];
+    }
 }
 
 /**
@@ -84,8 +108,9 @@ void LyQuiz::populate_quiz(void)
     // keep track of the chosen questions so we don't reuse them.
     // QHash<LyQuestion*, bool> chosen;
     LyQuestion *q = random_question();
-    DEBUG_PRINT(q->question().toStdString().c_str()
-            << endl
-            << q->answer().toStdString().c_str()
-    );
+    if (q)
+        DEBUG_PRINT(q->question().toStdString().c_str()
+                << endl
+                << q->answer().toStdString().c_str()
+        );
 }

@@ -15,7 +15,7 @@ class LyQuiz
     public:
         LyQuiz(void);
         LyQuiz(const LyDict&);
-        virtual ~LyQuiz (void);
+        // virtual ~LyQuiz (void);
 
         void setDictionary(const LyDict&);
         int  currentQuestion(void) const;
@@ -29,6 +29,9 @@ class LyQuiz
         /** stores the index of the current question */
         int _current_question;
         LyDict _dictionary;
+        // realistically speaking questions do not have to be just vocabulary
+        // words and their associated meanings. When this change comes into play
+        // _questions and _dictionary will have totally separate meanings.
         QList<LyQuestion> _questions;
 
         void populate_quiz(void);

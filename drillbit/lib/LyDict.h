@@ -2,7 +2,7 @@
 #define LYDICT_H
 
 #include <QtCore>
-#include "lyword.h"
+#include "LyWord.h"
 
 #define DEBUGMODE
 
