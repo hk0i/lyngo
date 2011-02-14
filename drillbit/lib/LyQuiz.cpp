@@ -9,32 +9,32 @@ LyQuiz::LyQuiz(void)
 LyQuiz::LyQuiz(const LyDict &dictionary)
     : _current_question(0)
 {
-    _dictionary = dictionary;
-    populate_quiz();
+    loadDictionary(dictionary);
 }
 
 /**
  * @brief
- *  Assigns a LyDict to the LyQuiz, this is mainly for use with the
- *  LyQuiz::LyQuiz() constructor that takes no LyDict argument.
+ *  Creates quiz @ref LyQuestion "questions" from a dictionary
  */
-void LyQuiz::setDictionary(const LyDict &newDict)
+void LyQuiz::loadDictionary(LyDict dictionary)
 {
     int i = 0; // loop counter
     int wom = 0; // random number (0,1), decides if question will be word or meaning
-    _dictionary = newDict;
-
     // generate questions based on the dictionary
-    for (i = 0; i < _dictionary.count(); ++i) {
+    DEBUG_PRINT("Now setting dictionary ..."
+            <<  "Dictionary count: " << dictionary.count()
+    );
+    for (i = 0; i < dictionary.count(); ++i) {
         wom = qrand() % 2;
+        DEBUG_PRINT("wom: " << wom);
         if (wom > 1) {
-            _questions.append(LyQuestion(_dictionary.itemAt(i)->word(),
-                              _dictionary.itemAt(i)->definition()
+            _questions.append(LyQuestion(dictionary.itemAt(i)->word(),
+                              dictionary.itemAt(i)->definition()
             ));
         }
         else {
-            _questions.append(LyQuestion(_dictionary.itemAt(i)->word(),
-                              _dictionary.itemAt(i)->definition()
+            _questions.append(LyQuestion(dictionary.itemAt(i)->definition(),
+                              dictionary.itemAt(i)->word()
             ));
         }
     }
@@ -65,22 +65,12 @@ LyQuestion LyQuiz::prev(void)
 
 /**
  * @brief
- *  Returns a pointer to the dictionary object being used by the quiz.
- */
-LyDict *LyQuiz::dictionary(void)
-{
-    return &_dictionary;
-}
-
-/**
- * @brief
  *  Returns the current question number; i.e., question 5
  */
 int LyQuiz::currentQuestion(void) const
 {
     return _current_question;
 }
-
 
 /*##################### Private member functions */
 
@@ -91,26 +81,8 @@ int LyQuiz::currentQuestion(void) const
 LyQuestion *LyQuiz::random_question(void)
 {
     int rnd = 0;
-    DEBUG_PRINT("questions.count(): " << _questions.count());
     if (_questions.count() > 0) {
         rnd = qrand() % _questions.count();
         return &_questions[rnd];
     }
-}
-
-/**
- * @brief
- *  Generates the entire quiz and stores it locally to be accessed through the
- *  next() and prev() functions.
- */
-void LyQuiz::populate_quiz(void)
-{
-    // keep track of the chosen questions so we don't reuse them.
-    // QHash<LyQuestion*, bool> chosen;
-    LyQuestion *q = random_question();
-    if (q)
-        DEBUG_PRINT(q->question().toStdString().c_str()
-                << endl
-                << q->answer().toStdString().c_str()
-        );
 }

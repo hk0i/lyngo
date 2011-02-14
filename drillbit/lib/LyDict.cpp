@@ -26,8 +26,16 @@ void LyDict::load_file(const QString &fileName)
 {
     QFile fp(fileName);
 
-    if (!fp.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!fp.exists()) {
+        DEBUG_PRINT("File \"" << fileName.toStdString().c_str() << "\" "
+                << "does not exist"
+        );
+    }
+
+    if (!fp.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        DEBUG_PRINT("error loading file: " << fileName.toStdString().c_str());
         return;
+    }
 
     QTextStream in(&fp);
     while (!in.atEnd()) {

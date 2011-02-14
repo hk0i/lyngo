@@ -5,8 +5,9 @@
 int main(int argc, const char **argv)
 {
     LyDict dict;
-    dict.load("../lessons/spanish/text books/revista "
-              "- conversacion sin barreras/cine prado.ldb");
+    dict.load("../../lessons/spanish/text books/revista "
+              "- conversasion sin barreras/cine prado.ldb");
+    DEBUG_PRINT("dict count: " << dict.count());
 
     LyQuiz quiz(dict);
 

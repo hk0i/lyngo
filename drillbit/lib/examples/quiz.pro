@@ -6,7 +6,6 @@ TEMPLATE = app
 TARGET = quiz
 DEPENDPATH += .
 INCLUDEPATH += . ../
-CONFIG += debug
 
 mac {
     CONFIG -= app_bundle

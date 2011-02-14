@@ -17,18 +17,18 @@ class LyQuiz
         LyQuiz(const LyDict&);
         // virtual ~LyQuiz (void);
 
-        void setDictionary(const LyDict&);
+        void loadDictionary(LyDict);
         int  currentQuestion(void) const;
 
         LyQuestion next(void);
         LyQuestion prev(void);
 
-        LyDict *dictionary(void);
-
     private:
         /** stores the index of the current question */
         int _current_question;
-        LyDict _dictionary;
+        /// @todo remove dictionary object, it has nothing to do with quizes,
+        /// instead allow the quiz to be generated from a dictionary and load
+        /// a dictionary into the questions
         // realistically speaking questions do not have to be just vocabulary
         // words and their associated meanings. When this change comes into play
         // _questions and _dictionary will have totally separate meanings.
