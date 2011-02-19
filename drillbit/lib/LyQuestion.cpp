@@ -13,6 +13,17 @@ LyQuestion::LyQuestion(const QString &question,
 
 }
 
+LyQuestion& LyQuestion::operator = (const LyQuestion &rhs)
+{
+    if (this == &rhs)
+        return *this;
+
+    this->setQuestion(rhs.question());
+    this->setAnswer(rhs.answer());
+
+    return *this;
+}
+
 /**
  * @brief
  *  Assigns a new question to the LyQuestion.
@@ -35,7 +46,7 @@ void LyQuestion::setAnswer(const QString &newAnswer)
  * @brief
  *  Returns the question
  */
-QString LyQuestion::question(void)
+QString LyQuestion::question(void) const
 {
     return _question;
 }
@@ -44,7 +55,7 @@ QString LyQuestion::question(void)
  * @brief
  *  Returns the answer
  */
-QString LyQuestion::answer(void)
+QString LyQuestion::answer(void) const
 {
     return _answer;
 }

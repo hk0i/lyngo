@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += . code tests ui
 INCLUDEPATH += . ui code
+CONFIG += debug
 
 # Input
 LIB_PATH=/Users/grekkos/apps/lyngo/lyngo-svn/trunk/lyngo/drillbit/lib/

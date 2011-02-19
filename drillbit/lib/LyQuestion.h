@@ -13,11 +13,14 @@ class LyQuestion
         LyQuestion(void);
         LyQuestion(const QString&, const QString&);
 
-        QString question(void);
-        QString answer(void);
+        QString question(void) const;
+        QString answer(void) const;
+        QString title(void) const;
 
         void setQuestion(const QString&);
         void setAnswer(const QString&);
+
+        LyQuestion &operator = (const LyQuestion &rhs);
 
     private:
 

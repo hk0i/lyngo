@@ -3,7 +3,7 @@
 make
 if [ $? == 0 ]; then
     # for Unix systems (non-mac os x)
-    # ./dictedit
+    ./dictedit
     # for max os x
-    ./dictedit.app/Contents/MacOS/dictedit
+    # ./dictedit.app/Contents/MacOS/dictedit
 fi
