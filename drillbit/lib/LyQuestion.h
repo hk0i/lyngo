@@ -15,10 +15,10 @@ class LyQuestion
 
         QString question(void) const;
         QString answer(void) const;
-        QString title(void) const;
 
         void setQuestion(const QString&);
         void setAnswer(const QString&);
+        void swap(void);
 
         LyQuestion &operator = (const LyQuestion &rhs);
 

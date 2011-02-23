@@ -24,7 +24,8 @@
 
 /**
  * @brief
- *  Generates quizzes from @ref LyDict "LyDicts".
+ *  Represents a quiz, or series of @ref LyQuestion "LyQuestions"
+ *  and also generates quizzes from @ref LyDict "LyDicts".
  * @author
  *  Gregory McQuillan
  */
@@ -38,9 +39,11 @@ class LyQuiz
 
         void loadDictionary(LyDict);
         void setTitle(const QString&);
+        void restart(void);
+        void randomize(void);
 
         int  currentQuestion(void) const;
-        int count(void) const;
+        int  count(void) const;
 
         LyQuestion next(void);
         LyQuestion prev(void);

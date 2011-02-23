@@ -22,11 +22,24 @@ int main(int argc, const char **argv)
     qDebug() << q1.question();
     qDebug() << q1.answer();
 
-    // rewind the questions by 1
+    // rewind the questions by 1/test prev()
     q1 = quiz.prev();
 
     // print out entire quiz
     qDebug() << quiz.quizHtml();
+
+    // test restart
+    quiz.restart();
+
+    // test randomize
+    quiz.randomize();
+
+    // print new quiz
+    for (int i = 0; i < quiz.count(); ++i) {
+        q1 = quiz.next();
+        qDebug() << q1.question();
+        qDebug() << q1.answer();
+    }
 
     return 0;
 }

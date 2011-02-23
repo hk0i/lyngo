@@ -1,5 +1,9 @@
 #include "LyQuiz.h"
 
+/**
+ * @brief
+ *  Create a quiz with a title (name)
+ */
 LyQuiz::LyQuiz(QString quizTitle)
     : _current_question(0),
       _quiz_title(quizTitle)
@@ -13,6 +17,10 @@ LyQuiz::LyQuiz(void)
 
 }
 
+/**
+ * @brief
+ *  Create a quiz and load the questions from a LyDict dictionary.
+ */
 LyQuiz::LyQuiz(const LyDict &dictionary)
     : _current_question(0)
 {
@@ -49,6 +57,41 @@ void LyQuiz::loadDictionary(LyDict dictionary)
 void LyQuiz::setTitle(const QString &newTitle)
 {
     _quiz_title = newTitle;
+}
+
+/**
+ * @brief
+ *  Restarts the quiz, resetting the current question to the beginning
+ */
+void LyQuiz::restart(void)
+{
+    _current_question = 0;
+}
+
+/**
+ * @brief
+ *  Randomizes the order of the questions in the quiz.
+ */
+void LyQuiz::randomize(void)
+{
+    int i = 0;      // loop counter
+    int rnd = -1;    // random number
+    // keep track of the indices that were already used.
+    QList<int> usedIndices;
+    QTime now = QTime::currentTime();
+
+    // seed the qrand function with the current time to make it a more unique
+    // set
+    qsrand(now.msec());
+
+    usedIndices.append(-1);
+
+    for (i = 0; i < _questions.count(); ++i) {
+        while (usedIndices.contains(rnd) && i < _questions.count() - 1)
+            rnd = (qrand() % _questions.count()) - 1;
+        _questions.swap(i, rnd);
+        usedIndices.append(rnd);
+    }
 }
 
 /**

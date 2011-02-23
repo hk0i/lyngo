@@ -22,5 +22,9 @@ int main(int argc, const char **argv)
     printQandA(q1);
     printQandA(q2);
 
+    // test swap feature
+    q1.swap();
+    printQandA(q1);
+
     return 0;
 }

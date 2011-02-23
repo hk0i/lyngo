@@ -59,3 +59,14 @@ QString LyQuestion::answer(void) const
 {
     return _answer;
 }
+
+/**
+ * @brief
+ *  Swaps the question with the answer
+ */
+void LyQuestion::swap(void)
+{
+    QString tmp = _question;
+    _question = _answer;
+    _answer = tmp;
+}

@@ -6,9 +6,11 @@ TEMPLATE = app
 TARGET = question
 DEPENDPATH += .
 INCLUDEPATH += . ../
+CONFIG += debug
 
 mac {
     CONFIG -= app_bundle
+    CONFIG -= debug
 }
 
 # Input
