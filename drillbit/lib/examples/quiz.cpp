@@ -6,7 +6,7 @@
 int main(int argc, const char **argv)
 {
     LyDict dict;
-    // checking new overloaded operators
+    //checking new overloaded operators
     LyQuestion q(QString("This is the question?"), QString("This is the answer."));
     LyQuestion w = q;
 
@@ -22,19 +22,34 @@ int main(int argc, const char **argv)
     qDebug() << q1.question();
     qDebug() << q1.answer();
 
-    // rewind the questions by 1/test prev()
+    //rewind the questions by 1/test prev()
     q1 = quiz.prev();
 
-    // print out entire quiz
+    //print out entire quiz
     qDebug() << quiz.quizHtml();
 
-    // test restart
+    //test restart
     quiz.restart();
 
-    // test randomize
+    //test randomize
     quiz.randomize();
 
-    // print new quiz
+    qDebug() << "randomize():";
+    //print new quiz
+    for (int i = 0; i < quiz.count(); ++i) {
+        q1 = quiz.next();
+        qDebug() << q1.question();
+        qDebug() << q1.answer();
+    }
+
+    //restart quiz again
+    quiz.restart();
+
+    //randomly swap questions/answers
+    quiz.randomSwap();
+
+    qDebug() << "randomSwap():";
+    //print new quiz
     for (int i = 0; i < quiz.count(); ++i) {
         q1 = quiz.next();
         qDebug() << q1.question();

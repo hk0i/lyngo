@@ -45,6 +45,7 @@ class LyQuiz
         void setTitle(const QString&);
         void restart(void);
         void randomize(void);
+        void randomSwap(void);
 
         int  currentQuestion(void) const;
         int  count(void) const;
@@ -72,6 +73,7 @@ class LyQuiz
         QList<LyQuestion> _questions;
 
         void populate_quiz(void);
+        void seed(void);
         LyQuestion *random_question(void);
 };
 

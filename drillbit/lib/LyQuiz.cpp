@@ -78,11 +78,7 @@ void LyQuiz::randomize(void)
     int rnd = -1;    // random number
     // keep track of the indices that were already used.
     QList<int> usedIndices;
-    QTime now = QTime::currentTime();
-
-    // seed the qrand function with the current time to make it a more unique
-    // set
-    qsrand(now.msec());
+    this->seed();
 
     usedIndices.append(-1);
 
@@ -93,6 +89,24 @@ void LyQuiz::randomize(void)
         usedIndices.append(rnd);
     }
 }
+
+/**
+ * @brief
+ *  Randomly swaps the questions in the quiz with the answers
+ */
+void LyQuiz::randomSwap(void)
+{
+    int i = 0;      // loop counter
+    int swap = 0;   // random number, determines if we should swap
+    this->seed();
+
+    for (i = 0 ; i < _questions.count(); ++i) {
+        swap = qrand() % 2;
+        if (swap == 1)
+            _questions[i].swap();
+    }
+}
+
 
 /**
  * @brief
@@ -200,4 +214,14 @@ QString LyQuiz::nextHtml(void)
         html += tmpHtml + HTML_QUESTION_END;
     }
     return html;
+}
+
+/**
+ * @brief
+ *  Seeds the qrand() function
+ */
+void LyQuiz::seed(void)
+{
+    QTime now = QTime::currentTime();
+    qsrand(now.msec());
 }
