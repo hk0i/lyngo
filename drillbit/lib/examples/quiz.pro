@@ -10,6 +10,7 @@ CONFIG += debug
 
 mac {
     CONFIG -= app_bundle
+    CONFIG -= debug
 }
 
 # Input

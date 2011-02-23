@@ -22,6 +22,10 @@
     "                <p>${QUESTION}</p>\n"
 #define HTML_QUESTION_END "            </div>\n"
 
+#define HTML_ANSWER "               <input type=\"radio\""\
+    "name=\"a${ANSWER_ID}\" id=\"a${ANSWER_ID}\" />\n" \
+    "               <label for=\"${ANSWER_ID}\">${ANSWER}</label>\n" \
+
 /**
  * @brief
  *  Represents a quiz, or series of @ref LyQuestion "LyQuestions"
