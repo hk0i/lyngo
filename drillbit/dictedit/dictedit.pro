@@ -8,8 +8,10 @@ DEPENDPATH += . code tests ui
 INCLUDEPATH += . ui code
 CONFIG += debug
 
+mac { CONFIG -= debug }
+
 # Input
-LIB_PATH=/Users/grekkos/apps/lyngo/lyngo-svn/trunk/lyngo/drillbit/lib/
+LIB_PATH=../lib/
 INCLUDEPATH += $$LIB_PATH
 HEADERS += $$LIB_PATH/lydict.h $$LIB_PATH/lyword.h ui/imp_dictedit.h
 FORMS += ui/dictedit.ui
