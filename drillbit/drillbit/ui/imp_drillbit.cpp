@@ -45,8 +45,6 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
 /**
  * @brief
  *  Sets up the ui for the next question by loading the question and answers.
- * @todo
- *  Possible bug: Choice D may never become a correct answer.
  */
 void DrillbitWin::next_question(void)
 {

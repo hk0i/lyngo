@@ -1,5 +1,5 @@
-#ifndef __IMP_DRILLBIT_H
-#define __IMP_DRILLBIT_H
+#ifndef IMP_DRILLBIT_H
+#define IMP_DRILLBIT_H
 
 #include <QtGui>
 #include <LyQuiz.h>
@@ -42,14 +42,15 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 
         // number of the correct answer for current question
         int _current_answer;
+        LyQuiz _quiz;
 
+        // member functions
         void next_question(void);
 
         void answers_to_buttons(QStringList);
         void check_answer(QPushButton*);
         void enable_all_buttons(void);
         void update_title(bool unitToo = false);
-        LyQuiz _quiz;
 };
 
 #endif
