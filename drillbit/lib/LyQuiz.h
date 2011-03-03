@@ -58,6 +58,8 @@ class LyQuiz
         // QString prevHtml(void);
         QString quizHtml(void);
 
+        QString randomAnswer(void);
+
     private:
 
         /// Title of the quiz

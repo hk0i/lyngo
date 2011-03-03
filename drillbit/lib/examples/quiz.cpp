@@ -56,5 +56,9 @@ int main(int argc, const char **argv)
         qDebug() << q1.answer();
     }
 
+    qDebug() << "Random Answers:";
+    for (int i = 0; i < 4; ++i)
+        qDebug() << quiz.randomAnswer();
+
     return 0;
 }

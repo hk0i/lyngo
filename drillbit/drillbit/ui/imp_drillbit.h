@@ -23,17 +23,23 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         void on_mnuFileHtmlQuiz_triggered(bool);
         */
         void on_mnuFileExit_triggered(bool);
-        /*
 
         // buttons
         void on_pbChoice1_clicked(void);
         void on_pbChoice2_clicked(void);
         void on_pbChoice3_clicked(void);
         void on_pbChoice4_clicked(void);
-        */
 
     private:
 
+        // number of the correct answer for current question
+        int _current_answer;
+
+        void nextQuestion(void);
+
+        void answersToButtons(QStringList);
+        void checkAnswer(QPushButton*);
+        void enableAllButtons(void);
         LyQuiz _quiz;
 };
 

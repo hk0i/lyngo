@@ -225,3 +225,15 @@ void LyQuiz::seed(void)
     QTime now = QTime::currentTime();
     qsrand(now.msec());
 }
+
+/**
+ * @brief
+ *  Returns the answer from a random question in the quiz, useful for multiple
+ *  choice quizzes.
+ */
+QString LyQuiz::randomAnswer(void)
+{
+    LyQuestion *tmp;
+    tmp = this->random_question();
+    return tmp->answer();
+}
