@@ -17,7 +17,9 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         //menus
         /*
         void on_mnuFileOpen_triggered(bool);
+        */
         void on_mnuFileOpenVocabulary_triggered(bool);
+        /*
         void on_mnuFileHtmlQuiz_triggered(bool);
         */
         void on_mnuFileExit_triggered(bool);
