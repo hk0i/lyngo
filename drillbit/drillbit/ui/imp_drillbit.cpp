@@ -36,6 +36,8 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
         tmpDict.load(filename);
         _quiz.loadDictionary(tmpDict);
     }
+
+    this->update_title(true);
     this->nextQuestion();
 }
 
@@ -55,12 +57,17 @@ void DrillbitWin::nextQuestion(void)
     //enable widgets
     this->enableAllButtons();
 
+    // check if we hit the end of the quiz
+    if (_quiz.currentQuestion() >= _quiz.count())
+        return;
+
     // next Question & Answer pair for quiz.
     LyQuestion q = _quiz.next();
 
     do {
         tmpAnswer = _quiz.randomAnswer();
-        if (!answers.contains(tmpAnswer)) {
+        if (!answers.contains(tmpAnswer)
+                && tmpAnswer != q.answer()) {
             answers << tmpAnswer;
             i++;
         }
@@ -69,7 +76,7 @@ void DrillbitWin::nextQuestion(void)
     // insert correct answer in randomly
     QTime now = QTime::currentTime();
     qsrand(now.msec());
-    _current_answer = qrand() % 3;
+    _current_answer = qrand() % 4;
     answers.insert(_current_answer, q.answer());
     _current_answer++;
 
@@ -80,7 +87,8 @@ void DrillbitWin::nextQuestion(void)
     qDebug() << "Correct answer:" << _current_answer;
 
     lblWord->setText(q.question());
-    this->answersToButtons(answers);
+    this->answers_to_buttons(answers);
+    update_title(true);
 }
 
 /**
@@ -88,7 +96,7 @@ void DrillbitWin::nextQuestion(void)
  *  Takes a QStringList of answers and applies them to the buttons in the order
  *  they appear.
  */
-void DrillbitWin::answersToButtons(QStringList answers)
+void DrillbitWin::answers_to_buttons(QStringList answers)
 {
     pbChoice1->setText(answers[0]);
     pbChoice2->setText(answers[1]);
@@ -121,4 +129,21 @@ void DrillbitWin::enableAllButtons(void)
     pbChoice2->setEnabled(true);
     pbChoice3->setEnabled(true);
     pbChoice4->setEnabled(true);
+}
+
+void DrillbitWin::update_title(bool unitToo)
+{
+    QString title = _quiz.title();
+    QString fullTitle = title;
+    if (_quiz.title().isEmpty())
+        title = "Untitled Quiz";
+
+    fullTitle += " (" + QString::number(_quiz.currentQuestion()) + "/"
+          +  QString::number(_quiz.count()) + ")";
+
+    this->setWindowTitle(tr("Lyngo Drillbit - ") + title);
+    if (unitToo)
+        lblUnit->setText(fullTitle);
+    else
+        lblUnit->setText(title);
 }

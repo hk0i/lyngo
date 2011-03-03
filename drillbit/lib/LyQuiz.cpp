@@ -36,6 +36,12 @@ void LyQuiz::loadDictionary(LyDict dictionary)
     int i = 0; // loop counter
     int wom = 0; // random number (0,1), decides if question will be word or meaning
     // generate questions based on the dictionary
+
+    // set title
+    this->setTitle(dictionary.name());
+
+    // clear the old list
+    _questions.clear();
     DEBUG_PRINT("Now setting dictionary ..."
             <<  "Dictionary count: " << dictionary.count()
     );

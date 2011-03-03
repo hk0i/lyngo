@@ -6,6 +6,14 @@
 
 #include "ui_drillbit.h"
 
+/**
+ * @brief
+ *  GUI Frontend for LyQuiz.
+ *
+ * @todo
+ *  Use statusbar to show statistics about quiz. Incorrect questions, questions
+ *  answered correctly, etc. Maybe even a timer in the future.
+ */
 class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 {
     Q_OBJECT
@@ -37,9 +45,10 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 
         void nextQuestion(void);
 
-        void answersToButtons(QStringList);
+        void answers_to_buttons(QStringList);
         void checkAnswer(QPushButton*);
         void enableAllButtons(void);
+        void update_title(bool unitToo = false);
         LyQuiz _quiz;
 };
 
