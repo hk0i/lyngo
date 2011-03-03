@@ -43,11 +43,11 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         // number of the correct answer for current question
         int _current_answer;
 
-        void nextQuestion(void);
+        void next_question(void);
 
         void answers_to_buttons(QStringList);
-        void checkAnswer(QPushButton*);
-        void enableAllButtons(void);
+        void check_answer(QPushButton*);
+        void enable_all_buttons(void);
         void update_title(bool unitToo = false);
         LyQuiz _quiz;
 };

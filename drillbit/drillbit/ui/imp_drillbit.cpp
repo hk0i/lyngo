@@ -38,7 +38,7 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
     }
 
     this->update_title(true);
-    this->nextQuestion();
+    this->next_question();
 }
 
 
@@ -48,14 +48,14 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
  * @todo
  *  Possible bug: Choice D may never become a correct answer.
  */
-void DrillbitWin::nextQuestion(void)
+void DrillbitWin::next_question(void)
 {
     QStringList answers;
     QString     tmpAnswer;
     int         i = 0;      // loop counter
 
     //enable widgets
-    this->enableAllButtons();
+    this->enable_all_buttons();
 
     // check if we hit the end of the quiz
     if (_quiz.currentQuestion() >= _quiz.count())
@@ -104,26 +104,26 @@ void DrillbitWin::answers_to_buttons(QStringList answers)
     pbChoice4->setText(answers[3]);
 }
 
-void DrillbitWin::on_pbChoice1_clicked(void) { checkAnswer(pbChoice1); }
-void DrillbitWin::on_pbChoice2_clicked(void) { checkAnswer(pbChoice2); }
-void DrillbitWin::on_pbChoice3_clicked(void) { checkAnswer(pbChoice3); }
-void DrillbitWin::on_pbChoice4_clicked(void) { checkAnswer(pbChoice4); }
+void DrillbitWin::on_pbChoice1_clicked(void) { check_answer(pbChoice1); }
+void DrillbitWin::on_pbChoice2_clicked(void) { check_answer(pbChoice2); }
+void DrillbitWin::on_pbChoice3_clicked(void) { check_answer(pbChoice3); }
+void DrillbitWin::on_pbChoice4_clicked(void) { check_answer(pbChoice4); }
 
-void DrillbitWin::checkAnswer(QPushButton *button)
+void DrillbitWin::check_answer(QPushButton *button)
 {
     int choice = button->objectName().right(1).toInt();
     qDebug() << choice;
 
     if (choice == _current_answer) {
         //correct answer, next question
-        this->nextQuestion();
+        this->next_question();
     }
     else {
         button->setEnabled(false);
     }
 }
 
-void DrillbitWin::enableAllButtons(void)
+void DrillbitWin::enable_all_buttons(void)
 {
     pbChoice1->setEnabled(true);
     pbChoice2->setEnabled(true);
