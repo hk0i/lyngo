@@ -42,6 +42,8 @@ void LyQuiz::loadDictionary(LyDict dictionary)
 
     // clear the old list
     _questions.clear();
+    // reset current question
+    _current_question = 0;
     DEBUG_PRINT("Now setting dictionary ..."
             <<  "Dictionary count: " << dictionary.count()
     );
