@@ -12,7 +12,7 @@ mac { CONFIG -= debug }
 
 # Input
 LIBS=-L../lib -llyngo
-INCLUDEPATH += $$LIB_PATH
+INCLUDEPATH += ../lib
 QMAKE_LFLAGS += -Wl,--rpath=\\\$\$ORIGIN/../lib
 HEADERS += ui/imp_dictedit.h
 FORMS += ui/dictedit.ui

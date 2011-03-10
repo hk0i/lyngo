@@ -4,15 +4,6 @@
 #include <QtCore>
 #include "LyWord.h"
 
-#define DEBUGMODE
-
-#ifdef DEBUGMODE
-#include <iostream>
-#define DEBUG_PRINT(x) std::cout << x << std::endl
-#else
-#define DEBUG_PRINT(x)
-#endif
-
 /**
  * @brief
  *  A list (dictionary) of @ref LyWord "LyWords" that is capable of file

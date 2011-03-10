@@ -26,14 +26,11 @@ void LyDict::load_file(const QString &fileName)
 {
     QFile fp(fileName);
 
-    if (!fp.exists()) {
-        DEBUG_PRINT("File \"" << fileName.toStdString().c_str() << "\" "
-                << "does not exist"
-        );
-    }
+    if (!fp.exists())
+        qDebug() << "File\"" << fileName << "\" does not exist";
 
     if (!fp.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        DEBUG_PRINT("error loading file: " << fileName.toStdString().c_str());
+        qDebug() << "error loading file: " << fileName;
         return;
     }
 
@@ -103,10 +100,7 @@ void LyDict::add(const QString &word,
     LyWord newWord(word, pos, definition);
     _words.append(newWord);
 
-    DEBUG_PRINT("Word added: "
-            << newWord.data().join(QString(", "))
-               .mid(2).toStdString().c_str());
-
+    qDebug () << "Word added:" << newWord.data().join(QString(", ")); //.mid(2);
 }
 
 /**
@@ -122,7 +116,7 @@ void LyDict::save(const QString &fileName)
     QFile fp(fileName);
 
     if (!fp.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        DEBUG_PRINT("Could not write to file " << fileName.toStdString().c_str());
+        qDebug () << "Could not write to file" << fileName;
         return;
     }
 

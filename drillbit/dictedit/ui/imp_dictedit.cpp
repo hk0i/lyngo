@@ -55,12 +55,12 @@ void DictEditWin::on_mnuNew_triggered(bool)
     _current_file = "";
 
     if (_dictionary) {
-        DEBUG_PRINT("file new: deleting old dictionary");
+        qDebug() << "file new: deleting old dictionary";
         delete this->_dictionary;
     }
-    DEBUG_PRINT("file new: creating new dictionary");
+    qDebug() << "file new: creating new dictionary";
     _dictionary = new LyDict();
-    DEBUG_PRINT("file new: update widgets");
+    qDebug() << "file new: update widgets";
     update_widgets();
 }
 
@@ -84,11 +84,11 @@ void DictEditWin::update_widgets(void)
     cmbPartOfSpeech->setCurrentIndex(0);
     leDefinition->clear();
 
-    DEBUG_PRINT("update_widgets: populating list data...");
+    qDebug() << "update_widgets: populating list data...";
 
     for (int i = 0; i < this->_dictionary->count(); ++i) {
         QTreeWidgetItem *item = new QTreeWidgetItem(this->_dictionary->itemAt(i)->data(false));
-        DEBUG_PRINT(this->_dictionary->itemAt(i)->data().join(", ").toStdString().c_str());
+        qDebug() << this->_dictionary->itemAt(i)->data().join(", ");
         this->twWordBank->addTopLevelItem(item);
     }
 
@@ -181,20 +181,18 @@ void DictEditWin::on_pbEdit_clicked(void)
 {
     if (this->twWordBank->currentItem()) {
         int currentRow = twWordBank->currentIndex().row();
-        DEBUG_PRINT("on_pbEdit_clicked(): "
-                 << "currentRow == " << currentRow
-        );
+        qDebug() << "on_pbEdit_clicked(): "
+                 << "currentRow == " << currentRow;
+
         _dictionary->itemAt(currentRow)->setWord(leWord->text());
         _dictionary->itemAt(currentRow)->setPos(LyDict::posFromName(
                     cmbPartOfSpeech->currentText()
         ));
         _dictionary->itemAt(currentRow)->setDefinition(leDefinition->text());
 
-        DEBUG_PRINT("on_pbEdit_clicked(): "
-                <<  "_dictionary->itemAt(currentRow) == "
-                << _dictionary->itemAt(currentRow)->data()
-                        .join(QString(", ")).toStdString().c_str()
-        );
+        qDebug() << "on_pbEdit_clicked(): "
+                 <<  "_dictionary->itemAt(currentRow) == "
+                 << _dictionary->itemAt(currentRow)->data();
 
         this->twWordBank->currentItem()->setData(0, 0, this->leWord->text());
         this->twWordBank->currentItem()->setData(1, 0, this->cmbPartOfSpeech->currentText());
@@ -211,9 +209,8 @@ void DictEditWin::on_pbRemove_clicked(void)
     if (twWordBank->currentItem()) {
         int currentRow = twWordBank->currentIndex().row();
         _dictionary->removeAt(currentRow);
-        DEBUG_PRINT("on_pbRemove_clicked(): "
-                <<  "currentRow == " << currentRow
-        );
+        qDebug() << "on_pbRemove_clicked(): "
+                 <<  "currentRow == " << currentRow;
         delete twWordBank->currentItem();
     }
 }

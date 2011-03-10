@@ -44,9 +44,8 @@ void LyQuiz::loadDictionary(LyDict dictionary)
     _questions.clear();
     // reset current question
     _current_question = 0;
-    DEBUG_PRINT("Now setting dictionary ..."
-            <<  "Dictionary count: " << dictionary.count()
-    );
+    qDebug () << "Now setting dictionary ..."
+              <<  "Dictionary count: " << dictionary.count();
     for (i = 0; i < dictionary.count(); ++i) {
         wom = qrand() % 2;
         if (wom > 1) {
