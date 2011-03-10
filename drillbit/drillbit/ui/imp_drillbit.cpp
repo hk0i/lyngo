@@ -35,10 +35,9 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
         LyDict tmpDict;
         tmpDict.load(filename);
         _quiz.loadDictionary(tmpDict);
+        this->update_title(true);
+        this->next_question();
     }
-
-    this->update_title(true);
-    this->next_question();
 }
 
 

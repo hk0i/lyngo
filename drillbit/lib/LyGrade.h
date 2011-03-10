@@ -11,7 +11,7 @@ class LyGrade
     public:
         LyGrade(void);
 
-        char grade(void);
+        char gradeLetter(void);
         double grade(void);
 
     private:
