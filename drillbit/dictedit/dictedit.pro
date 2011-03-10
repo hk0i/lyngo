@@ -11,11 +11,10 @@ CONFIG += debug
 mac { CONFIG -= debug }
 
 # Input
-LIB_PATH=../lib/
+LIBS=-L../lib -llyngo
 INCLUDEPATH += $$LIB_PATH
-HEADERS += $$LIB_PATH/lydict.h $$LIB_PATH/lyword.h ui/imp_dictedit.h
+QMAKE_LFLAGS += -Wl,--rpath=\\\$\$ORIGIN/../lib
+HEADERS += ui/imp_dictedit.h
 FORMS += ui/dictedit.ui
 SOURCES += main.cpp \
-           $$LIB_PATH/lydict.cpp \
-           $$LIB_PATH/lyword.cpp \
            ui/imp_dictedit.cpp

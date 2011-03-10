@@ -4,16 +4,13 @@
 
 TEMPLATE = app
 TARGET = 
-DEPENDPATH += . ui
+DEPENDPATH += . ui ../lib
 INCLUDEPATH += . ui ../lib
 
 # Input
-LIB_PATH=../lib/
-HEADERS += ui/imp_drillbit.h $$LIB_PATH/LyQuiz.h $$LIB_PATH/LyQuestion.h
+LIBS += -L../lib -llyngo
+QMAKE_LFLAGS += -Wl,--rpath,\\\$\$ORIGIN/../lib
+HEADERS += ui/imp_drillbit.h
 FORMS += ui/drillbit.ui
 SOURCES += main.cpp \
-           ui/imp_drillbit.cpp \
-           $$LIB_PATH/LyQuiz.cpp \
-           $$LIB_PATH/LyDict.cpp \
-           $$LIB_PATH/LyWord.cpp \
-           $$LIB_PATH/LyQuestion.cpp
+           ui/imp_drillbit.cpp
