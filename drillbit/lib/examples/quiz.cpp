@@ -14,7 +14,7 @@ int main(int argc, const char **argv)
     qDebug() << w.question() << w.answer();
 
     dict.load("../../lessons/spanish/text books/revista "
-              "- conversasion sin barreras/cine prado.ldb");
+              "- conversacion sin barreras/cine prado.ldb");
     qDebug() << "dict count:" << dict.count();
 
     LyQuiz quiz(dict);

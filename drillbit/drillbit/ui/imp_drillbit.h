@@ -13,6 +13,9 @@
  * @todo
  *  Use statusbar to show statistics about quiz. Incorrect questions, questions
  *  answered correctly, etc. Maybe even a timer in the future.
+ *
+ * @todo
+ *  Last page show summary
  */
 class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 {
@@ -42,7 +45,11 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 
         // number of the correct answer for current question
         int _current_answer;
+        int _mistakes;
         LyQuiz _quiz;
+
+        //Widgets
+        QLabel *lblStatus;
 
         // member functions
         void next_question(void);
@@ -51,6 +58,7 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         void check_answer(QPushButton*);
         void enable_all_buttons(void);
         void update_title(bool unitToo = false);
+        void update_statusbar(void);
 };
 
 #endif

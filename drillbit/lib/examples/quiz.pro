@@ -7,6 +7,11 @@ TARGET = quiz
 DEPENDPATH += .
 INCLUDEPATH += . ../
 CONFIG += debug
+LIBS += -L.. -llyngo
+
+unix {
+    QMAKE_LFLAGS += -Wl,--rpath=\\\$\$ORIGIN/..
+}
 
 mac {
     CONFIG -= app_bundle
@@ -14,12 +19,4 @@ mac {
 }
 
 # Input
-SOURCES += quiz.cpp \
-           ../LyQuestion.h \
-           ../LyQuestion.cpp \
-           ../LyDict.h \
-           ../LyDict.cpp \
-           ../LyWord.h \
-           ../LyWord.cpp \
-           ../LyQuiz.h \
-           ../LyQuiz.cpp
+SOURCES += quiz.cpp

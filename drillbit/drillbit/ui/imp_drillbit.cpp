@@ -1,10 +1,14 @@
 #include "imp_drillbit.h"
 
 DrillbitWin::DrillbitWin(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent),
+      _current_answer(0),
+      _mistakes(0)
 {
     setupUi(this);
-
+    lblStatus = new QLabel(this);
+    lblStatus->setText("Driller");
+    statusbar->addPermanentWidget(lblStatus);
 }
 
 
@@ -116,8 +120,10 @@ void DrillbitWin::check_answer(QPushButton *button)
         this->next_question();
     }
     else {
+        _mistakes++;
         button->setEnabled(false);
     }
+    this->update_statusbar();
 }
 
 void DrillbitWin::enable_all_buttons(void)
@@ -143,4 +149,19 @@ void DrillbitWin::update_title(bool unitToo)
         lblUnit->setText(fullTitle);
     else
         lblUnit->setText(title);
+}
+
+void DrillbitWin::update_statusbar(void)
+{
+    QString     statusbarText;
+    QTextStream statusbarStream(&statusbarText);
+
+    statusbarStream << "Question: "
+                  << _quiz.currentQuestion()
+                  << "/"
+                  << _quiz.count()
+                  << " "
+                  << "Mistakes: "
+                  << _mistakes;
+    lblStatus->setText(statusbarText);
 }
