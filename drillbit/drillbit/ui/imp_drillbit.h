@@ -5,6 +5,7 @@
 #include <LyQuiz.h>
 
 #include "ui_drillbit.h"
+#include "imp_settings.h"
 
 /**
  * @brief
@@ -20,6 +21,7 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
 
     public:
         DrillbitWin(QWidget *parent = 0);
+        ~DrillbitWin(void);
 
     private slots:
         //menus
@@ -32,17 +34,22 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         */
         void on_mnuFileExit_triggered(bool);
 
+        void on_mnuEditPreferences_triggered(bool);
+
         // buttons
         void on_pbChoice1_clicked(void);
         void on_pbChoice2_clicked(void);
         void on_pbChoice3_clicked(void);
         void on_pbChoice4_clicked(void);
 
+
     private:
 
         // number of the correct answer for current question
         int _current_answer;
         LyQuiz _quiz;
+        SettingsWin *_dlg_settings;
+        QSettings _settings;
 
         // member functions
         void next_question(void);
@@ -50,6 +57,7 @@ class DrillbitWin : public QMainWindow, private Ui::DrillbitWin
         void answers_to_buttons(QStringList);
         void check_answer(QPushButton*);
         void enable_all_buttons(void);
+        void install_preferences(void);
         void update_title(bool unitToo = false);
 };
 

@@ -14,7 +14,7 @@
    <string>Lyngo Drillbit</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton {
+   <string notr="true">QGridLayout &gt; QPushButton {
 	min-height: 50px;
 	max-height: 50px;
 }</string>
@@ -78,7 +78,7 @@
      </spacer>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="layChoices">
       <item row="0" column="0">
        <widget class="QPushButton" name="pbChoice1">
         <property name="sizePolicy">
@@ -90,7 +90,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>50</height>
+          <height>0</height>
          </size>
         </property>
         <property name="font">
@@ -198,7 +198,14 @@
     <addaction name="separator"/>
     <addaction name="mnuFileExit"/>
    </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="mnuEditPreferences"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="mnuFileOpen">
@@ -231,6 +238,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="mnuEditPreferences">
+   <property name="text">
+    <string>P&amp;references</string>
    </property>
   </action>
  </widget>

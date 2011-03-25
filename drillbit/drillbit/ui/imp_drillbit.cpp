@@ -4,9 +4,15 @@ DrillbitWin::DrillbitWin(QWidget *parent)
     : QMainWindow(parent)
 {
     setupUi(this);
-
+    _dlg_settings = 0;
+    setWindowTitle(QCoreApplication::applicationName());
 }
 
+DrillbitWin::~DrillbitWin(void)
+{
+    if (_dlg_settings)
+        delete _dlg_settings;
+}
 
 /**
  * @brief
@@ -15,6 +21,19 @@ DrillbitWin::DrillbitWin(QWidget *parent)
 void DrillbitWin::on_mnuFileExit_triggered(bool checked)
 {
     QCoreApplication::quit();
+}
+
+/**
+ * @brief
+ *  Displays preferences dialog
+ */
+void DrillbitWin::on_mnuEditPreferences_triggered(bool checked)
+{
+    int accept = 0;
+    if (!_dlg_settings)
+        _dlg_settings = new SettingsWin(this);
+
+    accept = _dlg_settings->exec();
 }
 
 /**
@@ -35,6 +54,7 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
         LyDict tmpDict;
         tmpDict.load(filename);
         _quiz.loadDictionary(tmpDict);
+        install_preferences();
         this->update_title(true);
         this->next_question();
     }
@@ -91,7 +111,7 @@ void DrillbitWin::next_question(void)
 /**
  * @brief
  *  Takes a QStringList of answers and applies them to the buttons in the order
- *  they appear.
+ *  they appear in the list.
  */
 void DrillbitWin::answers_to_buttons(QStringList answers)
 {
@@ -106,12 +126,18 @@ void DrillbitWin::on_pbChoice2_clicked(void) { check_answer(pbChoice2); }
 void DrillbitWin::on_pbChoice3_clicked(void) { check_answer(pbChoice3); }
 void DrillbitWin::on_pbChoice4_clicked(void) { check_answer(pbChoice4); }
 
+/**
+ * @brief
+ *  Checks to see if the button pushed is the correct answer
+ */
 void DrillbitWin::check_answer(QPushButton *button)
 {
     int choice = button->objectName().right(1).toInt();
     qDebug() << choice;
 
-    if (choice == _current_answer) {
+    button->clearFocus();
+    if (choice == _current_answer
+        || _settings.value("Questions/allow_mistakes").toBool()) {
         //correct answer, next question
         this->next_question();
     }
@@ -120,6 +146,10 @@ void DrillbitWin::check_answer(QPushButton *button)
     }
 }
 
+/**
+ * @brief
+ *  Enables all answer push buttons
+ */
 void DrillbitWin::enable_all_buttons(void)
 {
     pbChoice1->setEnabled(true);
@@ -128,6 +158,10 @@ void DrillbitWin::enable_all_buttons(void)
     pbChoice4->setEnabled(true);
 }
 
+/**
+ * @brief
+ *  Updates window title with some meaningful text
+ */
 void DrillbitWin::update_title(bool unitToo)
 {
     QString title = _quiz.title();
@@ -138,9 +172,22 @@ void DrillbitWin::update_title(bool unitToo)
     fullTitle += " (" + QString::number(_quiz.currentQuestion()) + "/"
           +  QString::number(_quiz.count()) + ")";
 
-    this->setWindowTitle(tr("Lyngo Drillbit - ") + title);
+    this->setWindowTitle(QCoreApplication::applicationName() + " - " + title);
     if (unitToo)
         lblUnit->setText(fullTitle);
     else
         lblUnit->setText(title);
+}
+
+/**
+ * @brief
+ *  Applies preferences that are required after file load
+ *  (i.e., Question randomization)
+ */
+void DrillbitWin::install_preferences(void)
+{
+    if (_settings.value("Questions/randomize_questions").toBool())
+        _quiz.randomize();
+    if (_settings.value("Questions/randomly_swap_questions").toBool())
+        _quiz.randomSwap();
 }
