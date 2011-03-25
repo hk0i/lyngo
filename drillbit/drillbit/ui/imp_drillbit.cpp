@@ -63,8 +63,10 @@ void DrillbitWin::on_mnuFileOpenVocabulary_triggered(bool checked)
         tmpDict.load(filename);
         _quiz.loadDictionary(tmpDict);
         install_preferences();
-        this->update_title(true);
-        this->next_question();
+        _mistakes = 0;
+        update_title(true);
+        next_question();
+        update_statusbar();
     }
 }
 
@@ -144,6 +146,10 @@ void DrillbitWin::check_answer(QPushButton *button)
     qDebug() << choice;
 
     button->clearFocus();
+
+    if (_quiz.currentQuestion() >= _quiz.count())
+        return;
+
     if (choice != _current_answer) {
         _mistakes++;
         if (_settings.value("Questions/allow_mistakes").toBool())
@@ -196,12 +202,12 @@ void DrillbitWin::update_statusbar(void)
     QString     statusbarText;
     QTextStream statusbarStream(&statusbarText);
 
-    statusbarStream << "Question: "
+    statusbarStream << tr("Question: ")
                   << _quiz.currentQuestion()
                   << "/"
                   << _quiz.count()
                   << " "
-                  << "Mistakes: "
+                  << tr("Mistakes: ")
                   << _mistakes;
     lblStatus->setText(statusbarText);
 
