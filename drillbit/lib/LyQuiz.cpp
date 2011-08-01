@@ -238,9 +238,12 @@ void LyQuiz::seed(void)
  *  Returns the answer from a random question in the quiz, useful for multiple
  *  choice quizzes.
  */
-QString LyQuiz::randomAnswer(void)
+QString LyQuiz::randomAnswer(bool swapped = false)
 {
     LyQuestion *tmp;
-    tmp = this->random_question();
+    do {
+        tmp = this->random_question();
+    } while (tmp->isSwapped() != swapped);
+
     return tmp->answer();
 }

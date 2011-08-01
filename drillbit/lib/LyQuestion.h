@@ -20,9 +20,13 @@ class LyQuestion
         void setAnswer(const QString&);
         void swap(void);
 
+        bool isSwapped(void);
+
         LyQuestion &operator = (const LyQuestion &rhs);
 
     private:
+
+        bool _swapped;
 
         QString _question;
         QString _answer;

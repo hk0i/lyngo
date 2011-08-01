@@ -9,7 +9,7 @@ INCLUDEPATH += . ui ../lib
 
 # Input
 LIBS += -L../lib -llyngo
-UNIX -MACX{ QMAKE_LFLAGS += -Wl,--rpath,\\\$\$ORIGIN/../lib }
+unix : !mac { QMAKE_LFLAGS += -Wl,--rpath,\\\$\$ORIGIN/../lib }
 HEADERS += ui/imp_drillbit.h ui/imp_settings.h
 FORMS += ui/drillbit.ui ui/settings.ui
 SOURCES += main.cpp \

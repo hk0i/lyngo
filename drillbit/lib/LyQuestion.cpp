@@ -8,7 +8,8 @@ LyQuestion::LyQuestion(void)
 LyQuestion::LyQuestion(const QString &question,
                        const QString &answer)
     : _question(question),
-      _answer(answer)
+      _answer(answer),
+      _swapped(false)
 {
 
 }
@@ -48,6 +49,8 @@ void LyQuestion::setAnswer(const QString &newAnswer)
  */
 QString LyQuestion::question(void) const
 {
+    if (_swapped)
+        return _answer;
     return _question;
 }
 
@@ -57,7 +60,10 @@ QString LyQuestion::question(void) const
  */
 QString LyQuestion::answer(void) const
 {
-    return _answer;
+    qDebug() << "Swapped = " << _swapped << '\n';
+    if (!_swapped)
+        return _answer;
+    return _question;
 }
 
 /**
@@ -66,7 +72,13 @@ QString LyQuestion::answer(void) const
  */
 void LyQuestion::swap(void)
 {
-    QString tmp = _question;
-    _question = _answer;
-    _answer = tmp;
+    // QString tmp = _question;
+    // _question = _answer;
+    // _answer = tmp;
+    _swapped = !_swapped;
+}
+
+bool LyQuestion::isSwapped(void)
+{
+    return _swapped;
 }

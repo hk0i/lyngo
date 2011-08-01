@@ -92,7 +92,7 @@ void DrillbitWin::next_question(void)
     LyQuestion q = _quiz.next();
 
     do {
-        tmpAnswer = _quiz.randomAnswer();
+        tmpAnswer = _quiz.randomAnswer(q.isSwapped());
         if (!answers.contains(tmpAnswer)
                 && tmpAnswer != q.answer()) {
             answers << tmpAnswer;
