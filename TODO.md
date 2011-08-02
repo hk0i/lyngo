@@ -1,6 +1,4 @@
-****************************************************************************
-**    For Lyngo Drillbit                                                  **
-****************************************************************************
+#For Lyngo Drillbit
 
 * Make drillbit source conform to new conventions
 
@@ -13,11 +11,11 @@
   this way the file format is more flexible.
 
 * Add options dialog (and/or menus) to control:
-** # of times a question can be wrong before skipping to the next question
-** Which language should be presented in the question, and which should be
-   available in the answer (if not using both and randomly picking just one).
-   i.e., asking a word in english with presented words in spanish, vice versa,
-   or mixed
+    * # of times a question can be wrong before skipping to the next question
+    * Which language should be presented in the question, and which should be
+       available in the answer (if not using both and randomly picking just one).
+       i.e., asking a word in english with presented words in spanish, vice versa,
+       or mixed
 
 * Add generate HTML quiz option to allow creation of HTML forms quizes (i.e.,
 * forms with a submit button) or hand written quizes that can be printed out.
@@ -31,9 +29,7 @@
 * can buy prizes and stuff. (i.e., an "ability" to eliminate half of the wrnog
 * choices).
 
-****************************************************************************
-**    MISC                                                                **
-****************************************************************************
+#MISC
 
 * Flash card program using drillbit files to produce flash cards for use on
   screen with option of producing html output for printing cut-out flash cards.

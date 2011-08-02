@@ -1,9 +1,9 @@
-QUICK COMPILE GUIDE
+#QUICK COMPILE GUIDE
 (THE REALLY QUICK VERSION)
 
 REQUIREMENTS
 ------------
-YOU NEED QT4. Download it from Trolltech.com
+YOU NEED QT4. Download it from http://qt.nokia.com
 
 Linux/MacX/Windows
 ------------------
