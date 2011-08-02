@@ -7,4 +7,4 @@ There is no formal installation for Lyngo as of yet, so you must compile it
 yourself. How you compile depends on your OS.
 
 ##COMPILING LYNGO
-For compiling information please read [COMPILING.md]()
+For compiling information please read COMPILING.md
